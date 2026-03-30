@@ -92,14 +92,14 @@ the dataset contains more NVE than VE
 The most verbose implementation was laude_sonnet_persona_2_ngo, indicating a tendency to generate longer, more detailed responses. In contrast, gpt4_minipersona_0_vanilla produced the shortest outputs, suggesting a more concise style.
 #### Clarity and readability assessment 
 
-### Comparison analysis: Calculate BOTH LLM clarity score AND conventional readability metrics
-#### When do they disagree? identify 5 examples showing their disagreement.
+### Comparison analysis: 
+Clarity and readability don’t always match. For example, Claude Sonnet has very low readability but still moderate clarity, meaning its responses are understandable but written in complex language. In contrast, GPT-4 Mini (NGO persona) has the highest clarity but only moderate readability, showing that the most effective responses are not always the simplest.
 
+They mainly disagree when text is complex but well-structured, or simple but lacking depth.
 
-#### Which is more accurate for counter-narratives? why?
+For counter-narratives, clarity is more reliable because it reflects understanding and effectiveness, while readability only measures surface features.
 
-
-#### What is you observe about the relationship between verbosity and readability?
+Finally, higher verbosity tends to reduce readability, but moderate length can improve clarity.
 
 
 # Challenges
