@@ -32,24 +32,26 @@ The authors for the research categorize extremists as individuals who hold oppos
 
 #### How is Violent and non-violent Extremism defined? Use this definition to design your prompt to classify between VE and NVE.
 
-An extremist is defined as someone who had been convicted of a criminal offense whether violent or non-violent and they hold attitudes or beliefs outside of mainstream political or ideological opinion. Then the Violent Extremist (VE) is defined as an individual who as been convicted of an actual violence e.g., acts of murder, murder, assault etc., committing serious damage to structures, having a potential act that would have constituted to violence if not disrupted or facilitation of violence through non-violent acts such as provision of explosives.
+- An extremist is defined as someone who has been convicted of a criminal offense, whether violent or non-violent, and who holds attitudes or beliefs that do not fit with mainstream political or ideological opinion.
 
-Non-Violent extremists are those who have been convicted of criminal offences which do not involve violence or facilitation of violence e.g., possessing a disturbing literature or sending a racist email.
+- Violent Extremist (VE) is defined as an individual who has been convicted of an act of violence such as murder, attempted murder, assault, or causing serious damage to structures, or who had a potential act that would have constituted violence if not disrupted, or who facilitated violence through non-violent acts such as the provision of materials or support for attacks.
+
+- Non-Violent Extremists (NVEs) are those who have been convicted of criminal offences which do not involve violence or the facilitation of violence, such as possessing or distributing extremist literature, sending racist hate messages, or fundraising for extremist causes.
 
 #### Design your sub-type classification prompt. What are some prompt design choices your team has had to make for these questions?
 #### Prompt Design Choice
 
 Our team made several important design choices when creating the prompt.
 
-First, we clearly told the model that the task is for classification and research purposes only, and that it should not refuse or endorse harmful content. This was important to reduce model refusal when the input contains violent or extremist language.
+First, we framed the task as text analysis for research and educational purposes, and clearly instructed the model to analyze without expanding harmful content. This helps reduce refusals when the input contains violent or extremist language.
 
-Second, we provided clear definitions for each subtype (ideological, political, religious). This helps the model make consistent decisions instead of guessing or mixing categories.
+Second, we provided clear definitions for each subtype (ideological, political, religious). This guides the model to make consistent decisions instead of guessing or mixing categories.
 
-Third, we forced the model to always give an answer by adding rules like “if unclear, set subtype to None and target to Unclear.” This ensures we don’t get empty or missing outputs.
+Third, instead of forcing the model to always answer, we added safe fallback options such as Target_group: Unclear. This ensures the model can still respond even when the content is ambiguous, without triggering refusals.
 
-Fourth, we required the model to return structured output (Subtype, Target_group, Text_Span, Reason). This makes the results easier to read, compare, and process later.
+Fourth, we required the model to return a structured output format (Subtype, Target_group, Text_Span, Reason). This makes the results easier to read, compare, and process programmatically.
 
-Finally, we added text span extraction and short reasoning to improve interpretability. This allows us to see exactly which part of the text led to the classification and understand the model’s decision.
+Finally, we included text span extraction and short reasoning to improve interpretability. This allows us to see which part of the text influenced the classification and better understand the model’s decision.
 
 
 the resulting cvs with 100 balanced samples can be found here [ve_nve_classification](ve_nve_classification.csv)
@@ -90,16 +92,28 @@ the dataset contains more NVE than VE
 ### LLM Comparison
 #### Verbosity: Compute the word length for each implementation and document which is the most verbose and which is the least verbose?
 The most verbose implementation was laude_sonnet_persona_2_ngo, indicating a tendency to generate longer, more detailed responses. In contrast, gpt4_minipersona_0_vanilla produced the shortest outputs, suggesting a more concise style.
+
+The analysis shows that more verbose responses (higher word count) tend to have lower readability scores. This is because longer texts often contain longer sentences and more complex structures, which reduce Flesch Reading Ease scores.
+
+However, higher verbosity does not necessarily reduce clarity. The LLM clarity scores remain high even for longer responses, indicating that well-structured explanations can still be easy to understand despite being more detailed.
+
+This suggests that moderate verbosity may be optimal, where the text is detailed enough to explain ideas clearly but not overly complex.
 #### Clarity and readability assessment 
+##### Clarity
+The LLM clarity scores are consistently high across all models and personas, with most averages ranging between 4.5 and 5. This suggests that the generated counter-narratives are generally clear and easy to understand for a general audience.
 
+NGO and vanilla personas tend to have the highest clarity scores, while law enforcement responses score slightly lower due to the use of legal and formal language.
+
+##### Readability
+The readability results show that most counter-narratives have very low Flesch Reading Ease scores (around 18–41) and high grade levels (around 11–15). This indicates that the texts are difficult to read and are above the intended 8th-grade level.
+
+This is mainly due to long sentences, formal vocabulary, and complex phrasing used across different personas. Among the models, NGO-style responses tend to have slightly better readability scores, while law enforcement and educator styles are the most complex.
 ### Comparison analysis: 
-Clarity and readability don’t always match. For example, Claude Sonnet has very low readability but still moderate clarity, meaning its responses are understandable but written in complex language. In contrast, GPT-4 Mini (NGO persona) has the highest clarity but only moderate readability, showing that the most effective responses are not always the simplest.
+There is a strong disagreement between LLM clarity scores and traditional readability metrics. In multiple examples, the readability score is very low (scaled score = 1), while the LLM clarity score is very high (score = 5), resulting in a large gap of 4 points.
 
-They mainly disagree when text is complex but well-structured, or simple but lacking depth.
+This disagreement occurs because readability metrics rely only on sentence length and word complexity, while LLM evaluation considers meaning, structure, and overall understanding. For example, texts with longer sentences and formal vocabulary are penalized by readability formulas but are still rated as clear by the LLM because they are logically structured and coherent.
 
-For counter-narratives, clarity is more reliable because it reflects understanding and effectiveness, while readability only measures surface features.
-
-Finally, higher verbosity tends to reduce readability, but moderate length can improve clarity.
+Therefore, LLM-based evaluation is more accurate for counter-narratives, as it better reflects how real people understand the message rather than just measuring surface-level text features.
 
 
 # Challenges
