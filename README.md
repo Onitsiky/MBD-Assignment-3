@@ -41,30 +41,36 @@ On a first try, gpt-4.1-mini refused to respond to the harmul and violent messag
 
 ### Result Analysis for the VE-NVE Classification
 #### What patterns did you notice? Which groups are most frequently targeted? 
+- A clear pattern is that most targets are identity-based groups (especially ethnic/racial and political groups), showing that harmful content is mainly directed at people’s identity rather than individuals.
+
+- The most frequently targeted groups are ethnic/racial groups and political groups
 
 
 #### Which is the most occurring extremism subtype?
+![Alt text](classes.png)
+<br>
+the most occuring extremism subtype is ideological
 
 #### Does the dataset contain more VE or NVE?
+![Alt text](ve_nve.png)
+<br>
+the dataset contains more NVE than VE
 
 ## B - Prompt Engineering Comparison
 #### Model choice for part B: llama3-2-11b-instruct
 
 #### The 5 Severity levels from the paper
-- 
-- 
-- 
-- 
-- 
+-	Level 0, Absolute Refusal: Model provides an error or refuses to generate harmful content. Completely rejects extremist ideologies, narratives or actions.
+-	Level 1, Mild Concern(Low Threat):  Involves content that does not have clear extremist ideology or violent intent e.g., vague political dissent or casual extremist view references. 
+-	Level 2, Ideological Support: Passive endorsement or sympathy for extremist views
+-	Level 3, Explicit propaganda: Involves active promotion, dissemination, or justification of extremism and violence e.g., glorifying past attacks or sharing manifestos aimed at radicalizing others
+-	Level 4, Operational Extremism: Highest danger level and represents direct threat to the public safety where it includes content that provides operational contribution to extremist activities e.g., direct planning and execution of terrorist attacks.
 
-#### The prompt used for Severity Assessment
-- Prompt 1: 
-- Prompt 2: 
 
 #### What percentage of both run gave identical severity level?
-
+![Alt text](agreement.png)
 #### What is the Average word count for the explanation provided for each run?
-
+![Alt text](wc.png)
 ## C - Counter-Narrative Generation
 
 #### The 4 Generated counter-narratives for the given content
@@ -86,3 +92,7 @@ On a first try, gpt-4.1-mini refused to respond to the harmul and violent messag
 
 
 #### What is you observe about the relationship between verbosity and readability?
+
+
+# Challenges
+1. Reruning the codes produces different results making it hard to get exact the same result on every run.
