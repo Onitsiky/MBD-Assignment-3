@@ -38,7 +38,7 @@ Non-Violent extremists are those who have been convicted of criminal offences wh
 
 #### Design your sub-type classification prompt. What are some prompt design choices your team has had to make for these questions?
 On a first try, gpt-4.1-mini refused to respond to the harmul and violent message, so we had to adjust to allow the model to respond and changed to gpt-5-mini.
-
+the resulting cvs with 100 balanced samples can be found here [ve_nve_classification](ve_nve_classification.csv)
 ### Result Analysis for the VE-NVE Classification
 #### What patterns did you notice? Which groups are most frequently targeted? 
 - A clear pattern is that most targets are identity-based groups (especially ethnic/racial and political groups), showing that harmful content is mainly directed at people’s identity rather than individuals.
@@ -96,3 +96,6 @@ the dataset contains more NVE than VE
 
 # Challenges
 1. Reruning the codes produces different results making it hard to get exact the same result on every run.
+
+# Link to The Repo
+The link to the repo can be found [here](https://github.com/Onitsiky/MBD-Assignment-3/blob/main/MBBM_Assignmet3.ipynb)
