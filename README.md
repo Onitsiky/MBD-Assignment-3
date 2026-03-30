@@ -37,7 +37,21 @@ An extremist is defined as someone who had been convicted of a criminal offense 
 Non-Violent extremists are those who have been convicted of criminal offences which do not involve violence or facilitation of violence e.g., possessing a disturbing literature or sending a racist email.
 
 #### Design your sub-type classification prompt. What are some prompt design choices your team has had to make for these questions?
-On a first try, gpt-4.1-mini refused to respond to the harmul and violent message, so we had to adjust to allow the model to respond and changed to gpt-5-mini.
+#### Prompt Design Choice
+
+Our team made several important design choices when creating the prompt.
+
+First, we clearly told the model that the task is for classification and research purposes only, and that it should not refuse or endorse harmful content. This was important to reduce model refusal when the input contains violent or extremist language.
+
+Second, we provided clear definitions for each subtype (ideological, political, religious). This helps the model make consistent decisions instead of guessing or mixing categories.
+
+Third, we forced the model to always give an answer by adding rules like “if unclear, set subtype to None and target to Unclear.” This ensures we don’t get empty or missing outputs.
+
+Fourth, we required the model to return structured output (Subtype, Target_group, Text_Span, Reason). This makes the results easier to read, compare, and process later.
+
+Finally, we added text span extraction and short reasoning to improve interpretability. This allows us to see exactly which part of the text led to the classification and understand the model’s decision.
+
+
 the resulting cvs with 100 balanced samples can be found here [ve_nve_classification](ve_nve_classification.csv)
 ### Result Analysis for the VE-NVE Classification
 #### What patterns did you notice? Which groups are most frequently targeted? 
