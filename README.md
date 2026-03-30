@@ -63,12 +63,12 @@ the resulting cvs with 100 balanced samples can be found here [ve_nve_classifica
 
 
 #### Which is the most occurring extremism subtype?
-![Alt text](classes.png)
+
 <br>
 the most occuring extremism subtype is ideological
 
 #### Does the dataset contain more VE or NVE?
-![Alt text](ve_nve.png)
+
 <br>
 the dataset contains more NVE than VE
 
