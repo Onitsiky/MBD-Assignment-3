@@ -87,15 +87,9 @@ the dataset contains more NVE than VE
 ![Alt text](wc.png)
 ## C - Counter-Narrative Generation
 
-#### The 4 Generated counter-narratives for the given content
-- Persona 0:
-- Persona 1:
-- Persona 2:
-- Persona 3:
-
 ### LLM Comparison
 #### Verbosity: Compute the word length for each implementation and document which is the most verbose and which is the least verbose?
-
+The most verbose implementation was laude_sonnet_persona_2_ngo, indicating a tendency to generate longer, more detailed responses. In contrast, gpt4_minipersona_0_vanilla produced the shortest outputs, suggesting a more concise style.
 #### Clarity and readability assessment 
 
 ### Comparison analysis: Calculate BOTH LLM clarity score AND conventional readability metrics
